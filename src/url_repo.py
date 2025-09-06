@@ -12,10 +12,14 @@ url_db: Dict[str, ShortenedUrl ] = {}
 code_db: Dict[str, ShortenedUrl] = {}
 
 
-def find_short_url(url: str) -> ShortenedUrl | None:
+def find_by_original_url(url: str) -> ShortenedUrl | None:
     if url in url_db: 
         return url_db[url]
-    
+    return None
+
+def find_by_code(code : str) -> ShortenedUrl | None:
+    if code in code_db:
+        return code_db[code]
     return None
 
 def save_shortened_url(url: str, code: str) -> ShortenedUrl:
@@ -25,6 +29,3 @@ def save_shortened_url(url: str, code: str) -> ShortenedUrl:
     code_db[code] = short
     return short 
 
-
-def has_shortened_code(code:str) -> bool:
-    return code in code_db
