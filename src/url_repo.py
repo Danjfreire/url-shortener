@@ -42,4 +42,8 @@ def update_shortened_url(shortened_url: ShortenedUrl, new_url: HttpUrl):
 
     return shortened_url
 
+def delete_shortened_url(short_url: ShortenedUrl):
+    url_db.pop(short_url.url)
+    code_db.pop(short_url.code)
+
 
