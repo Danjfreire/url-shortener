@@ -29,3 +29,17 @@ def save_shortened_url(url: str, code: str) -> ShortenedUrl:
     code_db[code] = short
     return short 
 
+def update_shortened_url(shortened_url: ShortenedUrl, new_url: HttpUrl):
+    now = datetime.datetime.now()
+    old_url = shortened_url.url
+
+    shortened_url.url = new_url
+    shortened_url.updated_at = now
+
+    url_db.pop(old_url)
+    url_db[new_url] = shortened_url
+    code_db[shortened_url.code] = shortened_url
+
+    return shortened_url
+
+
