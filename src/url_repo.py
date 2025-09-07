@@ -8,7 +8,7 @@ class ShortenedUrl(BaseModel):
     created_at: datetime.datetime
     updated_at: datetime.datetime
 
-class ShortnedUrlWithAccess(ShortenedUrl):
+class ShortenedUrlWithAccess(ShortenedUrl):
     access_count: int
 
 class UrlRepo:
@@ -59,7 +59,7 @@ class UrlRepo:
 
     def find_shortened_url_stats(self,short_url: ShortenedUrl):
         access_count = self.stats_db.get(short_url.code, 0)
-        return ShortnedUrlWithAccess(
+        return ShortenedUrlWithAccess(
             url=short_url.url,
             code=short_url.code, 
             created_at=short_url.created_at,
