@@ -53,7 +53,7 @@ def delete_short_url(code: str):
     
     url_repo.delete_shortened_url(short_url)
     
-@app.get("/shorte/{code}/stats")
+@app.get("/shorten/{code}/stats")
 def get_code_stats(code: str):
     short_url = url_repo.find_by_code(code)
 
